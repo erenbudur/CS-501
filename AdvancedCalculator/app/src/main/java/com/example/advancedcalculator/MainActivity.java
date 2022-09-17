@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Button eqBtn;
     private Button decBtn;
     private Button sqrtBtn;
+    private Button clrBtn;
+    private boolean override;
 
 
     @Override
@@ -59,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         decBtn = (Button) findViewById(R.id.decBtn);
         sqrtBtn = (Button) findViewById(R.id.sqrtBtn);
         visibleValue = (EditText) findViewById(R.id.resText);
-
+        clrBtn = (Button) findViewById(R.id.clearBtn);
+        override = true;
         visibleValue.setText("0");
 
 
@@ -92,8 +95,9 @@ public class MainActivity extends AppCompatActivity {
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
-                    return;
+                if (visibleValue.getText().toString().equals("0") || override) {
+                    visibleValue.setText("0");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("0"));
                 }
@@ -103,8 +107,9 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("1");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("1"));
                 }
@@ -114,8 +119,9 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0")|| override) {
                     visibleValue.setText("2");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("2"));
                 }
@@ -125,8 +131,9 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0")|| override) {
                     visibleValue.setText("3");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("3"));
                 }
@@ -137,8 +144,9 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("4");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("4"));
                 }
@@ -147,8 +155,9 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0")|| override) {
                     visibleValue.setText("5");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("5"));
                 }
@@ -158,8 +167,9 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0")|| override) {
                     visibleValue.setText("6");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("6"));
                 }
@@ -168,8 +178,9 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("7");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("7"));
                 }
@@ -178,8 +189,10 @@ public class MainActivity extends AppCompatActivity {
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("8");
+                    override = false;
+
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("8"));
                 }
@@ -188,8 +201,9 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")) {
+                if (visibleValue.getText().toString().equals("0")|| override) {
                     visibleValue.setText("9");
+                    override = false;
                 } else {
                     visibleValue.setText(visibleValue.getText().toString().concat("9"));
                 }
@@ -210,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                     performOp();
                     storedOp = '+';
                 }
-             }
+            }
         });
         subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,9 +282,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!visibleValue.getText().toString().contains(".")) {
+                    visibleValue.setText(visibleValue.getText().toString().concat("."));
+                }
+
             }
         });
         sqrtBtn.setOnClickListener(new View.OnClickListener() {
@@ -282,9 +301,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        clrBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                storedValue = 0;
+                visibleValue.setText("0");
+                storedOp = ' ';
+            }
+        });
+
 
     }
     private void performOp() {
+
         Double curValue = Double.parseDouble(visibleValue.getText().toString());
         switch (storedOp) {
             case '+':
