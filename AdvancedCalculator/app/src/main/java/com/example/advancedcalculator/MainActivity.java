@@ -14,13 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText visibleValue;
     private double storedValue;
-    private Button addBtn;
-    private Button subBtn;
-    private Button mulBtn;
-    private Button divBtn;
-    private Button eqBtn;
-    private Button decBtn;
-    private Button sqrtBtn;
+    private char storedOp;
     private Button btn1;
     private Button btn2;
     private Button btn3;
@@ -31,11 +25,19 @@ public class MainActivity extends AppCompatActivity {
     private Button btn8;
     private Button btn9;
     private Button btn0;
+    private Button addBtn;
+    private Button subBtn;
+    private Button mulBtn;
+    private Button divBtn;
+    private Button eqBtn;
+    private Button decBtn;
+    private Button sqrtBtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        storedValue = 0;
         setContentView(R.layout.activity_main);
         btn1 = (Button) findViewById(R.id.oneBtn);
         btn2 = (Button) findViewById(R.id.twoBtn);
@@ -45,7 +47,14 @@ public class MainActivity extends AppCompatActivity {
         btn6 = (Button) findViewById(R.id.sixBtn);
         btn7 = (Button) findViewById(R.id.sevenBtn);
         btn8 = (Button) findViewById(R.id.eightBtn);
-        btn9 = (Button) findViewById(R.id.nineBtn);
+        btn9 = (Button) findViewById(R.id.nineBtn);;
+        addBtn = (Button) findViewById(R.id.addBtn);
+        subBtn = (Button) findViewById(R.id.subBtn);
+        mulBtn = (Button) findViewById(R.id.mulBtn);
+        divBtn = (Button) findViewById(R.id.divBtn);
+        eqBtn = (Button) findViewById(R.id.eqBtn);
+        decBtn = (Button) findViewById(R.id.decBtn);
+        sqrtBtn = (Button) findViewById(R.id.sqrtBtn);
         visibleValue = (EditText) findViewById(R.id.resText);
 
         visibleValue.setText("0");
@@ -184,6 +193,66 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (storedValue == 0 && storedOp.equals(null)) {
+                    storedValue = Double.parseDouble(visibleValue.getText().toString());
+                    storedOp = '+';
+                }
+                else if (!(storedOp.equals(null))) {
+
+                }
+             }
+        });
+        subBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        mulBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        divBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        eqBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        decBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        sqrtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+
 
     }
+    private Double performOp() {
+        Double curValue = Double.parseDouble(visibleValue.getText().toString());
+        switch (storedOp) {
+            case '+':
+                return 1.0;
+            case '-':
+                return 2.0;
+            case '*':
+                return 3.0;
+            case '/':
+                return 4.0;
+            default:
+                return 5.0;
+        }
+    }
+
 }
