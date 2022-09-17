@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (num1.getText().toString().equals("") || num2.getText().toString().equals("")) {
+                    tvAnswer.setText("Please provide two values for the calculation");
+                    return;
+                }
                 Double result;
                 result = Double.parseDouble(num1.getText().toString()) +
                         Double.parseDouble(num2.getText().toString());
@@ -48,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (num1.getText().toString().equals("") || num2.getText().toString().equals("")) {
+                    tvAnswer.setText("Please provide two values for the calculation");
+                    return;
+                }
                 Double result;
                 result = Double.parseDouble(num1.getText().toString()) -
                         Double.parseDouble(num2.getText().toString());
@@ -59,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         mulBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (num1.getText().toString().equals("") || num2.getText().toString().equals("")) {
+                    tvAnswer.setText("Please provide two values for the calculation");
+                    return;
+                }
                 Double result;
                 result = Double.parseDouble(num1.getText().toString()) *
                         Double.parseDouble(num2.getText().toString());
@@ -69,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         divBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (num1.getText().toString().equals("") || num2.getText().toString().equals("")) {
+                    tvAnswer.setText("Please provide two values for the calculation");
+                    return;
+                }
                 if (Double.parseDouble(num2.getText().toString()) == 0) {
                     tvAnswer.setText("Division by 0 is not allowed");
                     return;
@@ -84,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
         modBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (num1.getText().toString().equals("") || num2.getText().toString().equals("")) {
+                    tvAnswer.setText("Please provide two values for the calculation");
+                    return;
+                }
                 if (Double.parseDouble(num2.getText().toString()) == 0) {
                     tvAnswer.setText("Mod by 0 is not allowed");
                     return;
