@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                override = true;
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '+';
@@ -229,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
         subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                override = true;
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '-';
@@ -245,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
         mulBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                override = true;
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '*';
@@ -261,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
         divBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                override = true;
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '/';
@@ -277,6 +281,7 @@ public class MainActivity extends AppCompatActivity {
         eqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                override = true;
                 if (!(storedValue == ' ')) {
                     performOp();
                 }
@@ -335,6 +340,7 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
+        storedValue = curValue;
     }
 
 }
