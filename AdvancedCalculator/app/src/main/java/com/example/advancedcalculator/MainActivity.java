@@ -2,12 +2,16 @@ package com.example.advancedcalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.lang.Math;
 
 public class MainActivity extends AppCompatActivity {
@@ -119,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")|| override) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("2");
                     override = false;
                 } else {
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")|| override) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("3");
                     override = false;
                 } else {
@@ -155,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")|| override) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("5");
                     override = false;
                 } else {
@@ -167,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")|| override) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("6");
                     override = false;
                 } else {
@@ -201,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (visibleValue.getText().toString().equals("0")|| override) {
+                if (visibleValue.getText().toString().equals("0") || override) {
                     visibleValue.setText("9");
                     override = false;
                 } else {
@@ -217,11 +221,9 @@ public class MainActivity extends AppCompatActivity {
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '+';
-                }
-                else if (!(storedOp == '+')) {
+                } else if (!(storedOp == '+')) {
                     storedOp = '+';
-                }
-                else {
+                } else {
                     performOp();
                     storedOp = '+';
                 }
@@ -234,11 +236,9 @@ public class MainActivity extends AppCompatActivity {
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '-';
-                }
-                else if (!(storedOp == '-')) {
+                } else if (!(storedOp == '-')) {
                     storedOp = '-';
-                }
-                else {
+                } else {
                     performOp();
                     storedOp = '-';
                 }
@@ -251,11 +251,9 @@ public class MainActivity extends AppCompatActivity {
                 if (storedValue == 0 && storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '*';
-                }
-                else if (!(storedOp == '*')) {
+                } else if (!(storedOp == '*')) {
                     storedOp = '*';
-                }
-                else {
+                } else {
                     performOp();
                     storedOp = '*';
                 }
@@ -282,9 +280,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 override = true;
-                if (!(storedValue == ' ')) {
+                Pair<Character, Double> doublePair = new Pair<>(storedOp, Double.parseDouble(visibleValue.getText().toString()));
+                ;
+                if (storedOp != ' ') {
                     performOp();
                 }
+
             }
         });
 
@@ -301,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Double curValue = Double.parseDouble(visibleValue.getText().toString());
+//TODO error for sqrt
                 visibleValue.setText(Double.toString(Math.sqrt(curValue)));
             }
         });
@@ -317,8 +319,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private void performOp() {
 
+    private void performOp() {
+        Context context = getApplicationContext();
         Double curValue = Double.parseDouble(visibleValue.getText().toString());
         switch (storedOp) {
             case '+':
@@ -334,13 +337,22 @@ public class MainActivity extends AppCompatActivity {
                 visibleValue.setText(Double.toString(storedValue));
                 break;
             case '/':
+                if (curValue == 0) {
+                    Toast.makeText(context, "Error: Cannot divide by zero. Clearing calculator", Toast.LENGTH_SHORT).show();
+                    storedValue = 0;
+                    visibleValue.setText("0");
+                    storedOp = ' ';
+                    return;
+                }
                 storedValue /= curValue;
                 visibleValue.setText(Double.toString(storedValue));
                 break;
+
             default:
                 break;
         }
-        storedValue = curValue;
+
+
     }
 
 }
