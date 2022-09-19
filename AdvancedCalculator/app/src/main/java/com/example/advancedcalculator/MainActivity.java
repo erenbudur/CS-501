@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 override = true;
-                if (storedValue == 0 && storedOp == ' ') {
+                if (storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '+';
                 } else if (!(storedOp == '+')) {
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 override = true;
-                if (storedValue == 0 && storedOp == ' ') {
+                if (storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '-';
                 } else if (!(storedOp == '-')) {
@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 override = true;
-                if (storedValue == 0 && storedOp == ' ') {
+                if (storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '*';
                 } else if (!(storedOp == '*')) {
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 override = true;
-                if (storedValue == 0 && storedOp == ' ') {
+                if (storedOp == ' ') {
                     storedValue = Double.parseDouble(visibleValue.getText().toString());
                     storedOp = '/';
                 }
@@ -280,12 +280,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 override = true;
-                Pair<Character, Double> doublePair = new Pair<>(storedOp, Double.parseDouble(visibleValue.getText().toString()));
-                ;
                 if (storedOp != ' ') {
                     performOp();
                 }
-
+                storedOp = ' ';
             }
         });
 
@@ -302,7 +300,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Double curValue = Double.parseDouble(visibleValue.getText().toString());
-//TODO error for sqrt
+                if (curValue < 0) {
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, "Error: Cannot take square root of a negative number. Clearing calculator", Toast.LENGTH_SHORT).show();
+                    storedValue = 0;
+                    visibleValue.setText("0");
+                    storedOp = ' ';
+                    return;
+                }
                 visibleValue.setText(Double.toString(Math.sqrt(curValue)));
             }
         });
