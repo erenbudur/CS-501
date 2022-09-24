@@ -6,13 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <SeekBar
+        android:id="@+id/Celsius"
+        android:layout_width="280dp"
+        android:layout_height="27dp"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="128dp" />
 
+    <SeekBar
+        android:id="@+id/fahrenheit"
+        android:layout_width="280dp"
+        android:layout_height="27dp"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="253dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
