@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">C2_P29</string>
+    <string name="orangeJuice">200</string>
+    <string name="bread">120</string>
+    <string name="coffee">20</string>
 </resources>
