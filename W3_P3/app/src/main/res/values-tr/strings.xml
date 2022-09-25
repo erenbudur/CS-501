@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">W3_P3</string>
+    <string name="celsius">Santigrat:</string>
+    <string name="fahrenheit">Fahrenhayt:</string>
+    <string name="warm">Keşke sıcak olsa</string>
+    <string name="cold">Keşke soğuk olsa</string>
+    <string name="interest">İlginç bir mesaj</string>
+</resources>

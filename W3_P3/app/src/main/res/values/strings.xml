@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">W3_P3</string>
+    <string name="celsius">Celsius:</string>
+    <string name="fahrenheit">Fahrenheit:</string>
+    <string name="warm">I wish it were warmer</string>
+    <string name="cold">I wish it were colder</string>
+    <string name="interest">An interesting message</string>
 </resources>

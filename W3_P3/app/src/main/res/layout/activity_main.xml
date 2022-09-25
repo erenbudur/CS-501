@@ -37,7 +37,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Celsius:"
+        android:text="@string/celsius"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
-        android:text="Fahrenheit:"
+        android:text="@string/fahrenheit"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,4 +89,17 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.079" />
+
+    <TextView
+        android:id="@+id/interesting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/interest"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
 </androidx.constraintlayout.widget.ConstraintLayout>

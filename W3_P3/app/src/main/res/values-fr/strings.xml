@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">W3_P3</string>
+    <string name="celsius">Celsius:</string>
+    <string name="fahrenheit">Fahrenheit:</string>
+    <string name="warm">J\'aimerais qu\'il fasse plus chaud</string>
+    <string name="cold">J\'aimerais qu\'il fasse plus froid</string>
+    <string name="interest">Un message intéressant</string>
+
+</resources>
