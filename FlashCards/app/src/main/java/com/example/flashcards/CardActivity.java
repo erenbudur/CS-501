@@ -29,18 +29,21 @@ public class CardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_card);
         Configuration config = getResources().getConfiguration();
         submissions = 0;
         correct = 0;
-        modifyLayout(config, true);
+        //modifyLayout(config, true);
         valOne = (TextView) findViewById(R.id.valOneText);
         valTwo = (TextView) findViewById(R.id.valTwoText);
         operator = (TextView) findViewById(R.id.opText);
         message = (TextView) findViewById(R.id.messageText);
         answer = (EditText) findViewById(R.id.editTextNumber);
         button = (Button) findViewById(R.id.button);
+        answer.setText("0");
         findRand();
-        modifyLayout(config, false);
+        setVals();
+        //modifyLayout(config, false);
         String correctUser = getIntent().getStringExtra("username");
         Toast.makeText(getBaseContext(), "Welcome " + correctUser + "to flash cards", Toast.LENGTH_LONG).show();
 
@@ -79,10 +82,10 @@ public class CardActivity extends AppCompatActivity {
 
     }
 
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        modifyLayout(newConfig, false);
-    }
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        modifyLayout(newConfig, false);
+//    }
     public void findRand() {
         valOneInt = ThreadLocalRandom.current().nextInt(0, 100);
         valTwoInt = ThreadLocalRandom.current().nextInt(0, 20);
@@ -101,16 +104,16 @@ public class CardActivity extends AppCompatActivity {
         operator.setText(curOp);
     }
 
-    public void modifyLayout(Configuration newConfig, boolean firstRun) {
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_card_landscape);
-        }
-        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            setContentView(R.layout.activity_card);
-        }
-        if (!firstRun) {
-            setVals();
-        }
-    }
+//    public void modifyLayout(Configuration newConfig, boolean firstRun) {
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            setContentView(R.layout.activity_card_landscape);
+//        }
+//        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            setContentView(R.layout.activity_card);
+//        }
+//        if (!firstRun) {
+//            setVals();
+//        }
+//    }
 
 }
