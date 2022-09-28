@@ -14,8 +14,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class CardActivity extends AppCompatActivity {
 
-    public int submissions;
-    public int correct;
+    public int submissions = 0;
+    public int correct = 0;
     public TextView valOne;
     public TextView valTwo;
     public TextView operator;
@@ -31,8 +31,8 @@ public class CardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
         Configuration config = getResources().getConfiguration();
-        submissions = 0;
-        correct = 0;
+
+
         //modifyLayout(config, true);
         valOne = (TextView) findViewById(R.id.valOneText);
         valTwo = (TextView) findViewById(R.id.valTwoText);
@@ -40,12 +40,22 @@ public class CardActivity extends AppCompatActivity {
         message = (TextView) findViewById(R.id.messageText);
         answer = (EditText) findViewById(R.id.editTextNumber);
         button = (Button) findViewById(R.id.button);
-        answer.setText("0");
-        findRand();
+
+
+        if(savedInstanceState == null){
+            String correctUser = getIntent().getStringExtra("username");
+            Toast.makeText(getBaseContext(), "Welcome " + correctUser + "to flash cards", Toast.LENGTH_LONG).show();
+            findRand();
+        }else{
+            submissions =  savedInstanceState.getInt("count");
+            correct = savedInstanceState.getInt("correct");
+            valOneInt = savedInstanceState.getInt("num1");
+            valTwoInt = savedInstanceState.getInt("num2");
+            curOp = savedInstanceState.getString("op");
+
+
+        }
         setVals();
-        //modifyLayout(config, false);
-        String correctUser = getIntent().getStringExtra("username");
-        Toast.makeText(getBaseContext(), "Welcome " + correctUser + "to flash cards", Toast.LENGTH_LONG).show();
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -54,27 +64,25 @@ public class CardActivity extends AppCompatActivity {
                 submissions++;
                 int int1 = Integer.valueOf(valOne.getText().toString());
                 int int2 = Integer.valueOf(valTwo.getText().toString());
-                double ans = Double.valueOf(answer.getText().toString());
+                int ans = !answer.getText().toString().matches("") ? Integer.parseInt(answer.getText().toString()) : 0;
                 String op = operator.getText().toString();
+                double curr;
                 if (op.equals("+")) {
-                    double curr = int1 + int2;
-                    if (ans == curr) {
-                        correct++;
-                    }
+                    curr = int1 + int2;
                 }
                 else {
-                    double curr = int1 - int2;
-                    if (ans == curr) {
-                        correct++;
-                    }
+                    curr = int1 - int2;
+                }
+                if (ans == curr) {
+                    correct++;
                 }
                 if (submissions == 10) {
-                    String score = "Score: " + Integer.toString(correct) + " / " + Integer.toString(submissions);
+                    String score = "Score: " + correct + " / " + submissions;
                     Toast.makeText(getBaseContext(), score, Toast.LENGTH_LONG).show();
                     submissions = 0;
                     correct = 0;
                 }
-                answer.setText("0");
+                answer.setText("");
                 findRand();
                 setVals();
             }
@@ -87,9 +95,9 @@ public class CardActivity extends AppCompatActivity {
 //        modifyLayout(newConfig, false);
 //    }
     public void findRand() {
-        valOneInt = ThreadLocalRandom.current().nextInt(0, 100);
-        valTwoInt = ThreadLocalRandom.current().nextInt(0, 20);
-        int decision = ThreadLocalRandom.current().nextInt(0, 100);
+        valOneInt = (int)(Math.random()*99+1);
+        valTwoInt = (int)(Math.random()*20+1);
+        int decision = (int)(Math.random()*99+1);
         if (decision < 50) {
             curOp = "+";
         }
@@ -98,10 +106,27 @@ public class CardActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     public void setVals() {
         valOne.setText(Integer.toString(valOneInt));
         valTwo.setText(Integer.toString(valTwoInt));
         operator.setText(curOp);
+    }
+
+
+    @Override
+    public void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("count",submissions);
+        outState.putInt("correct", correct);
+        outState.putInt("num1", valOneInt);
+        outState.putInt("num2", valTwoInt);
+        outState.putString("op", curOp);
+
+
     }
 
 //    public void modifyLayout(Configuration newConfig, boolean firstRun) {

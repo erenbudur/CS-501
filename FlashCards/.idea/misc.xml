@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Eren/CS-501/FlashCards/app/src/main/res/layout-land/activity_card.xml" value="0.22" />
+        <entry key="..\:/Users/Eren/CS-501/FlashCards/app/src/main/res/layout/activity_card.xml" value="0.20923913043478262" />
+        <entry key="..\:/Users/Eren/CS-501/FlashCards/app/src/main/res/layout/activity_card_landscape.xml" value="0.115625" />
+        <entry key="..\:/Users/Eren/CS-501/FlashCards/app/src/main/res/layout/activity_main.xml" value="0.20923913043478262" />
+        <entry key="..\:/Users/Eren/CS-501/FlashCards/app/src/main/res/layout/activity_main2.xml" value="0.20923913043478262" />
         <entry key="app/src/main/res/layout-land/activity_card.xml" value="0.26102292768959434" />
         <entry key="app/src/main/res/layout/activity_card.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_card_landscape.xml" value="0.24682971014492755" />
