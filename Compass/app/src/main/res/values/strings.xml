@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Compass</string>
+    <string name="main_message">Please flick in a direction to open its activity</string>
+    <string name="north_message">Hohoho welcome to the North Pole! </string>
+    <string name="south_message">Howdy there partner welcome to the South! </string>
+    <string name="east_message">Seems like we might be a little lost in the East.</string>
+    <string name="west_message">Hello it is I, Kanye West</string>
+</resources>
