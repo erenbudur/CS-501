@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/usdLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="143dp"
+        android:text="@string/usd_label"
+        app:layout_constraintEnd_toStartOf="@+id/enterAmount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/enterAmount"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/start_val"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eurLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginBottom="140dp"
+        android:text="@string/eur_label"
+        app:layout_constraintBottom_toTopOf="@+id/audLabel"
+        app:layout_constraintEnd_toStartOf="@+id/eurValue"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/eurValue"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="140dp"
+        android:text="@string/start_val"
+        app:layout_constraintBottom_toTopOf="@+id/audValue"
+        app:layout_constraintEnd_toStartOf="@+id/gbpLabel" />
+
+    <TextView
+        android:id="@+id/gbpLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="140dp"
+        android:text="@string/gbp_label"
+        app:layout_constraintBottom_toTopOf="@+id/yenLabel"
+        app:layout_constraintEnd_toStartOf="@+id/gbpValue" />
+
+    <TextView
+        android:id="@+id/gbpValue"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="140dp"
+        android:text="@string/start_val"
+        app:layout_constraintBottom_toTopOf="@+id/yenValue"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/audLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginBottom="160dp"
+        android:text="@string/aud_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/audValue"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/audValue"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="160dp"
+        android:text="@string/start_val"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/yenLabel" />
+
+    <TextView
+        android:id="@+id/yenLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="160dp"
+        android:text="@string/yen_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/yenValue" />
+
+    <TextView
+        android:id="@+id/yenValue"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="160dp"
+        android:text="@string/start_val"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

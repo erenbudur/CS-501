@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             }
             return super.onFling(e1, e2, velocityX, velocityY);
         }
+
+
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {

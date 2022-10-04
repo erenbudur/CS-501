@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CurrencyConverter</string>
+    <string name="usd_label">USD: </string>
+    <string name="gbp_label">GBP: </string>
+    <string name="aud_label">AUD: </string>
+    <string name="eur_label">EUR: </string>
+    <string name="yen_label">YEN: </string>
+    <string name="start_val">0.00</string>
+</resources>
